@@ -9,13 +9,7 @@
   "functions": {
     "web/backend/app.py": {
       "runtime": "python3.9",
-      "includeFiles": [
-        "web/backend/**",
-        "src/**",
-        "models/**",
-        "data/**",
-        "web/frontend/**"
-      ]
+      "includeFiles": "**"
     }
   }
 }
