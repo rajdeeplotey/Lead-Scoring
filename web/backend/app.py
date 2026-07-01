@@ -18,7 +18,12 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'src'))
 from data_prep import encode_yes_no_columns, encode_website_status, encode_branding_quality
 from scoring_engine import score_dataframe, score_business
 from ml_model import add_ml_predictions
-from .utils import clean_for_json, clean_dict_for_json
+
+# Try relative import for package mode (Vercel), fall back to absolute for direct execution
+try:
+    from .utils import clean_for_json, clean_dict_for_json
+except ImportError:
+    from utils import clean_for_json, clean_dict_for_json
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-secret-key')
@@ -26,9 +31,11 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-secret-key')
 CORS(app)
 
 # Paths - work in both local and Vercel environments
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SAMPLE_DATA_PATH = os.path.join(BASE_DIR, 'data', 'sample_businesses_khanna.csv')
-FRONTEND_DIR = os.path.join(BASE_DIR, 'web', 'frontend')
+# Get project root by going up from app.py location
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(CURRENT_DIR))
+SAMPLE_DATA_PATH = os.path.join(PROJECT_ROOT, 'data', 'sample_businesses_khanna.csv')
+FRONTEND_DIR = os.path.join(PROJECT_ROOT, 'web', 'frontend')
 FRONTEND_URL = os.getenv('FRONTEND_URL', '')
 
 
@@ -259,3 +266,7 @@ def serve_static_files(filename):
 def serve_static(filename):
     """Serve static files (CSS, JS, images, etc.)."""
     return send_from_directory(FRONTEND_DIR, filename)
+
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=5000)
