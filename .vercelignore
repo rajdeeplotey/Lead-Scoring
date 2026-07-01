@@ -48,3 +48,6 @@ notebooks/.ipynb_checkpoints/
 
 # Vercel
 .vercel/
+
+# Exclude Streamlit app (not used for Vercel deployment)
+src/app.py
