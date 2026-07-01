@@ -11,5 +11,16 @@
       "src": "/(.*)",
       "dest": "web/backend/app.py"
     }
-  ]
+  ],
+  "functions": {
+    "web/backend/app.py": {
+      "includeFiles": [
+        "web/backend/**",
+        "src/**",
+        "models/**",
+        "data/**",
+        "web/frontend/**"
+      ]
+    }
+  }
 }
