@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - B Socio Lead Scoring</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-white min-h-screen pt-24">
+  <!-- Navbar -->
+  <div id="navbar-container"></div>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="mb-8 fade-up">
+      <h1 class="text-3xl font-bold text-[#050B49] mb-2">Dashboard</h1>
+      <p class="text-[#555555]">Analytics and insights from your lead scoring data</p>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div class="stat-card" id="total-businesses-card">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm text-[#555555] mb-1">Total Businesses</p>
+            <p id="total-businesses" class="text-3xl font-bold text-[#050B49]">0</p>
+          </div>
+          <div class="w-12 h-12 bg-gradient-to-br from-[#1343B9] to-[#0E81F2] rounded-xl flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-card" id="hot-leads-card">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm text-[#555555] mb-1">Hot Leads</p>
+            <p id="hot-count" class="text-3xl font-bold text-[#0E81F2]">0</p>
+          </div>
+          <div class="w-12 h-12 bg-gradient-to-br from-[#0E81F2] to-[#4E39E8] rounded-xl flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-card" id="warm-leads-card">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm text-[#555555] mb-1">Warm Leads</p>
+            <p id="warm-count" class="text-3xl font-bold text-[#1343B9]">0</p>
+          </div>
+          <div class="w-12 h-12 bg-gradient-to-br from-[#4E39E8] to-[#1343B9] rounded-xl flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-card" id="cold-leads-card">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm text-[#555555] mb-1">Cold Leads</p>
+            <p id="cold-count" class="text-3xl font-bold text-[#050B49]">0</p>
+          </div>
+          <div class="w-12 h-12 bg-gradient-to-br from-[#050B49] to-[#1343B9] rounded-xl flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="grid lg:grid-cols-2 gap-8 mb-8">
+      <!-- Lead Status Distribution -->
+      <div class="card">
+        <h3 class="text-lg font-semibold text-[#050B49] mb-4">Lead Status Distribution</h3>
+        <div class="relative h-64">
+          <canvas id="statusChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Average Score by Category -->
+      <div class="card">
+        <h3 class="text-lg font-semibold text-[#050B49] mb-4">Average Score by Category</h3>
+        <div class="relative h-64">
+          <canvas id="categoryChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Weaknesses Analysis -->
+    <div class="card">
+      <h3 class="text-lg font-semibold text-[#050B49] mb-4">Most Common Weaknesses</h3>
+      <div class="relative h-64">
+        <canvas id="weaknessesChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Load Sample Data Button -->
+    <div class="mt-8 text-center">
+      <button id="load-sample-btn" class="btn-primary inline-flex items-center px-6 py-3">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+        </svg>
+        Load Sample Data
+      </button>
+    </div>
+  </main>
+
+  <!-- Quick Find Modal -->
+  <div id="quick-find-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modal-title" class="modal-title">Quick Find</h3>
+        <button id="modal-close" class="modal-close">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="modal-content-body">
+          <!-- Table or empty state will be inserted here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = '/api';
+    let statusChart, categoryChart, weaknessesChart;
+
+    // Load navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('navbar-container').innerHTML = html;
+      });
+
+    // Load sample data handler
+    async function handleLoadSampleData() {
+      try {
+        const response = await fetch(`${API_BASE}/sample-data`);
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to load sample data');
+        }
+
+        // Store sample data in localStorage
+        localStorage.setItem('scoredBusinesses', JSON.stringify(data.businesses));
+        localStorage.setItem('scoredTimestamp', Date.now());
+        updateDashboard(data.businesses);
+      } catch (error) {
+        alert('Error loading sample data: ' + error.message);
+      }
+    }
+
+    // Load sample data
+    document.getElementById('load-sample-btn').addEventListener('click', () => {
+      handleLoadSampleData();
+    });
+
+    // Check for stored data on page load
+    function loadStoredData() {
+      const storedBusinesses = localStorage.getItem('scoredBusinesses');
+      if (storedBusinesses) {
+        try {
+          const businesses = JSON.parse(storedBusinesses);
+          if (businesses && businesses.length > 0) {
+            updateDashboard(businesses);
+            return true;
+          }
+        } catch (e) {
+          console.error('Error parsing stored data:', e);
+        }
+      }
+      return false;
+    }
+
+    // Auto-load stored data on page load
+    if (!loadStoredData()) {
+      // If no stored data, load sample data automatically
+      document.getElementById('load-sample-btn').click();
+    }
+
+    function updateDashboard(businesses) {
+      // Update stats
+      document.getElementById('total-businesses').textContent = businesses.length;
+
+      const hotCount = businesses.filter(b => b.status === 'Hot').length;
+      const warmCount = businesses.filter(b => b.status === 'Warm').length;
+      const coldCount = businesses.filter(b => b.status === 'Cold').length;
+
+      document.getElementById('hot-count').textContent = hotCount;
+      document.getElementById('warm-count').textContent = warmCount;
+      document.getElementById('cold-count').textContent = coldCount;
+
+      // Update charts
+      updateStatusChart(hotCount, warmCount, coldCount);
+      updateCategoryChart(businesses);
+      updateWeaknessesChart(businesses);
+    }
+
+    function updateStatusChart(hot, warm, cold) {
+      const ctx = document.getElementById('statusChart').getContext('2d');
+
+      if (statusChart) {
+        statusChart.destroy();
+      }
+
+      statusChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Hot', 'Warm', 'Cold'],
+          datasets: [{
+            data: [hot, warm, cold],
+            backgroundColor: [
+              'rgba(239, 68, 68, 0.8)',
+              'rgba(245, 158, 11, 0.8)',
+              'rgba(59, 130, 246, 0.8)'
+            ],
+            borderColor: [
+              'rgba(239, 68, 68, 1)',
+              'rgba(245, 158, 11, 1)',
+              'rgba(59, 130, 246, 1)'
+            ],
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }
+      });
+    }
+
+    function updateCategoryChart(businesses) {
+      const ctx = document.getElementById('categoryChart').getContext('2d');
+
+      // Calculate average score by category
+      const categoryScores = {};
+      const categoryCounts = {};
+
+      businesses.forEach(b => {
+        const category = b.category || 'Unknown';
+        if (!categoryScores[category]) {
+          categoryScores[category] = 0;
+          categoryCounts[category] = 0;
+        }
+        categoryScores[category] += b.total_score || 0;
+        categoryCounts[category]++;
+      });
+
+      const categories = Object.keys(categoryScores);
+      const avgScores = categories.map(cat => 
+        categoryCounts[cat] > 0 ? (categoryScores[cat] / categoryCounts[cat]).toFixed(1) : 0
+      );
+
+      if (categoryChart) {
+        categoryChart.destroy();
+      }
+
+      categoryChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: categories,
+          datasets: [{
+            label: 'Average Score',
+            data: avgScores,
+            backgroundColor: 'rgba(99, 102, 241, 0.8)',
+            borderColor: 'rgba(99, 102, 241, 1)',
+            borderWidth: 2,
+            borderRadius: 8
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 100
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
+      });
+    }
+
+    function updateWeaknessesChart(businesses) {
+      const ctx = document.getElementById('weaknessesChart').getContext('2d');
+
+      // Count weaknesses
+      const weaknessCounts = {
+        'Google Presence': 0,
+        'Instagram Activity': 0,
+        'Website Status': 0,
+        'WhatsApp Availability': 0,
+        'Menu/Catalog': 0,
+        'Branding Quality': 0,
+        'Online Ordering': 0
+      };
+
+      const maxPoints = {
+        'Google Presence': 20,
+        'Instagram Activity': 20,
+        'Website Status': 15,
+        'WhatsApp Availability': 15,
+        'Menu/Catalog': 10,
+        'Branding Quality': 10,
+        'Online Ordering': 10
+      };
+
+      businesses.forEach(b => {
+        const pillarMapping = {
+          'score_google_presence': 'Google Presence',
+          'score_instagram_activity': 'Instagram Activity',
+          'score_website_status': 'Website Status',
+          'score_whatsapp_availability': 'WhatsApp Availability',
+          'score_menu_catalog': 'Menu/Catalog',
+          'score_branding_quality': 'Branding Quality',
+          'score_online_ordering': 'Online Ordering'
+        };
+
+        for (const [scoreKey, weaknessName] of Object.entries(pillarMapping)) {
+          const score = b[scoreKey] || 0;
+          const max = maxPoints[weaknessName];
+          if (score < max * 0.5) {
+            weaknessCounts[weaknessName]++;
+          }
+        }
+      });
+
+      const labels = Object.keys(weaknessCounts);
+      const counts = Object.values(weaknessCounts);
+
+      if (weaknessesChart) {
+        weaknessesChart.destroy();
+      }
+
+      weaknessesChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Businesses with Weakness',
+            data: counts,
+            backgroundColor: 'rgba(239, 68, 68, 0.8)',
+            borderColor: 'rgba(239, 68, 68, 1)',
+            borderWidth: 2,
+            borderRadius: 8
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          indexAxis: 'y',
+          scales: {
+            x: {
+              beginAtZero: true
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
+      });
+    }
+
+    // Quick Find Modal functionality
+    const modal = document.getElementById('quick-find-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalContentBody = document.getElementById('modal-content-body');
+    const modalClose = document.getElementById('modal-close');
+
+    // Close modal on X button click
+    modalClose.addEventListener('click', closeModal);
+
+    // Close modal on backdrop click
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+
+    function closeModal() {
+      modal.classList.add('hidden');
+    }
+
+    function openModal(title, businesses) {
+      modalTitle.textContent = title;
+      modalContentBody.innerHTML = '';
+
+      if (businesses.length === 0) {
+        // Show empty state
+        const status = title.split('—')[1].trim().toLowerCase();
+        modalContentBody.innerHTML = `
+          <div class="modal-empty-state">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <p class="text-lg font-medium text-[#050B49] mb-2">No ${title.split('—')[1].trim()} in this dataset yet.</p>
+            <p class="text-sm text-[#555555]">Upload or load data to see leads here.</p>
+          </div>
+        `;
+      } else {
+        // Show table
+        const tableHTML = `
+          <div class="modal-table-container">
+            <table class="modal-table">
+              <thead>
+                <tr>
+                  <th>Sr. No.</th>
+                  <th>Business Name</th>
+                  <th>Lead Score</th>
+                  <th>Category</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${businesses.map((b, index) => `
+                  <tr>
+                    <td>${index + 1}</td>
+                    <td>${b.business_name || 'N/A'}</td>
+                    <td><span class="font-semibold text-[#0E81F2]">${b.total_score || 0}</span></td>
+                    <td>${b.category || 'N/A'}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        `;
+        modalContentBody.innerHTML = tableHTML;
+      }
+
+      modal.classList.remove('hidden');
+    }
+
+    // Stat card click handlers
+    document.getElementById('total-businesses-card').addEventListener('click', () => {
+      const storedBusinesses = localStorage.getItem('scoredBusinesses');
+      if (storedBusinesses) {
+        const businesses = JSON.parse(storedBusinesses);
+        openModal('Quick Find — All Businesses', businesses);
+      }
+    });
+
+    document.getElementById('hot-leads-card').addEventListener('click', () => {
+      const storedBusinesses = localStorage.getItem('scoredBusinesses');
+      if (storedBusinesses) {
+        const businesses = JSON.parse(storedBusinesses);
+        const hotLeads = businesses.filter(b => b.status === 'Hot');
+        openModal('Quick Find — Hot Leads', hotLeads);
+      }
+    });
+
+    document.getElementById('warm-leads-card').addEventListener('click', () => {
+      const storedBusinesses = localStorage.getItem('scoredBusinesses');
+      if (storedBusinesses) {
+        const businesses = JSON.parse(storedBusinesses);
+        const warmLeads = businesses.filter(b => b.status === 'Warm');
+        openModal('Quick Find — Warm Leads', warmLeads);
+      }
+    });
+
+    document.getElementById('cold-leads-card').addEventListener('click', () => {
+      const storedBusinesses = localStorage.getItem('scoredBusinesses');
+      if (storedBusinesses) {
+        const businesses = JSON.parse(storedBusinesses);
+        const coldLeads = businesses.filter(b => b.status === 'Cold');
+        openModal('Quick Find — Cold Leads', coldLeads);
+      }
+    });
+  </script>
+
+  <!-- Footer -->
+  <div id="footer-container"></div>
+
+  <script>
+    // Load navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('navbar-container').innerHTML = html;
+      });
+
+    // Load footer
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+      });
+
+    // Load sample data
+    document.getElementById('load-sample-btn').addEventListener('click', () => {
+      handleLoadSampleData();
+    });
+
+    // Check for stored data on page load
+    loadStoredData();
+  </script>
+</body>
+</html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload CSV - B Socio Lead Scoring</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+    .drop-zone.dragover {
+      border-color: #0E81F2;
+      background-color: #F8FAFF;
+    }
+  </style>
+</head>
+<body class="bg-white min-h-screen pt-24">
+  <!-- Navbar -->
+  <div id="navbar-container"></div>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="mb-8 fade-up">
+      <h1 class="text-3xl font-bold text-[#050B49] mb-2">Upload CSV</h1>
+      <p class="text-[#555555]">Upload your business data CSV to get lead scores for all businesses</p>
+    </div>
+
+    <!-- Upload Zone -->
+    <div id="upload-section" class="mb-8">
+      <div id="drop-zone" class="drop-zone border-2 border-dashed border-[#1343B9]/30 rounded-2xl p-12 text-center bg-white hover:border-[#0E81F2] transition-colors cursor-pointer">
+        <div class="flex flex-col items-center">
+          <svg class="w-16 h-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+          </svg>
+          <p class="text-lg text-[#050B49] mb-2">Drag and drop your CSV file here</p>
+          <p class="text-sm text-[#555555] mb-4">or click to browse</p>
+          <input type="file" id="file-input" accept=".csv" class="hidden">
+          <button id="browse-btn" class="btn-primary px-6 py-3">
+            Browse Files
+          </button>
+        </div>
+      </div>
+
+      <!-- Loading State -->
+      <div id="loading-state" class="hidden mt-6">
+        <div class="flex items-center justify-center space-x-3">
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0E81F2]"></div>
+          <span class="text-[#555555]">Processing your CSV...</span>
+        </div>
+      </div>
+
+      <!-- Error State -->
+      <div id="error-state" class="hidden mt-6 bg-red-50 border border-red-200 rounded-lg p-4">
+        <div class="flex items-center">
+          <svg class="w-5 h-5 text-red-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span id="error-message" class="text-red-700"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Section -->
+    <div id="results-section" class="hidden">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+        <div>
+          <h2 class="text-2xl font-bold text-[#050B49]">Scored Businesses</h2>
+          <p id="results-count" class="text-[#555555]"></p>
+        </div>
+        <button id="download-btn" class="btn-primary inline-flex items-center px-4 py-2">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+          </svg>
+          Download Scored CSV
+        </button>
+      </div>
+
+      <!-- Results Table -->
+      <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Business Name</th>
+                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Score</th>
+                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</th>
+                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">ML Score</th>
+                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">ML Status</th>
+              </tr>
+            </thead>
+            <tbody id="results-body" class="divide-y divide-gray-200">
+              <!-- Results will be inserted here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Business Detail Modal -->
+      <div id="detail-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-6">
+              <h3 id="modal-business-name" class="text-2xl font-bold text-gray-900"></h3>
+              <button id="close-modal" class="text-gray-400 hover:text-gray-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
+
+            <div id="modal-content">
+              <!-- Modal content will be inserted here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let scoredData = null;
+
+    // Load navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('navbar-container').innerHTML = html;
+      });
+
+    // Drop zone functionality
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-input');
+    const browseBtn = document.getElementById('browse-btn');
+    const loadingState = document.getElementById('loading-state');
+    const errorState = document.getElementById('error-state');
+    const errorMessage = document.getElementById('error-message');
+    const uploadSection = document.getElementById('upload-section');
+    const resultsSection = document.getElementById('results-section');
+
+    browseBtn.addEventListener('click', () => fileInput.click());
+
+    dropZone.addEventListener('click', (e) => {
+      if (e.target !== browseBtn) fileInput.click();
+    });
+
+    dropZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropZone.classList.add('dragover');
+    });
+
+    dropZone.addEventListener('dragleave', () => {
+      dropZone.classList.remove('dragover');
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropZone.classList.remove('dragover');
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        handleFileUpload(files[0]);
+      }
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) {
+        handleFileUpload(e.target.files[0]);
+      }
+    });
+
+    async function handleFileUpload(file) {
+      if (!file.name.endsWith('.csv')) {
+        showError('Please upload a CSV file');
+        return;
+      }
+
+      hideError();
+      showLoading();
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      console.log('Uploading file:', file.name, 'Size:', file.size, 'bytes');
+
+      try {
+        const response = await fetch(`${API_BASE}/score-csv`, {
+          method: 'POST',
+          body: formData,
+          mode: 'cors'
+        });
+
+        console.log('Response status:', response.status);
+        console.log('Response ok:', response.ok);
+
+        let data;
+        try {
+          const responseText = await response.text();
+          console.log('Response text:', responseText);
+          data = JSON.parse(responseText);
+        } catch (parseError) {
+          console.error('JSON parse error:', parseError);
+          throw new Error('Server returned invalid data. Please try again or contact support.');
+        }
+
+        console.log('Response data:', data);
+
+        if (!response.ok) {
+          throw new Error(data.error || `Upload failed with status ${response.status}`);
+        }
+
+        scoredData = data.businesses;
+        // Store in localStorage for dashboard
+        localStorage.setItem('scoredBusinesses', JSON.stringify(scoredData));
+        localStorage.setItem('scoredTimestamp', Date.now());
+        displayResults(data);
+      } catch (error) {
+        console.error('Upload error:', error);
+        showError(error.message || 'Failed to upload file. Please check your connection and try again.');
+      } finally {
+        hideLoading();
+      }
+    }
+
+    function showLoading() {
+      loadingState.classList.remove('hidden');
+    }
+
+    function hideLoading() {
+      loadingState.classList.add('hidden');
+    }
+
+    function showError(message) {
+      errorMessage.textContent = message;
+      errorState.classList.remove('hidden');
+    }
+
+    function hideError() {
+      errorState.classList.add('hidden');
+    }
+
+    function displayResults(data) {
+      resultsSection.classList.remove('hidden');
+      document.getElementById('results-count').textContent = `${data.count} businesses scored`;
+
+      const tbody = document.getElementById('results-body');
+      tbody.innerHTML = '';
+
+      data.businesses.forEach((business, index) => {
+        const row = document.createElement('tr');
+        row.className = 'hover:bg-gray-50 cursor-pointer transition-colors';
+        row.addEventListener('click', () => showBusinessDetail(business));
+
+        const statusBadge = getStatusBadge(business.status);
+        const mlStatusBadge = business.ml_lead_status ? getStatusBadge(business.ml_lead_status) : '<span class="text-gray-400">N/A</span>';
+
+        row.innerHTML = `
+          <td class="px-6 py-4 whitespace-nowrap">
+            <div class="font-medium text-gray-900">${business.business_name}</div>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <div class="text-lg font-semibold text-gray-900">${business.total_score}/100</div>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">${statusBadge}</td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <div class="text-gray-700">${business.ml_lead_score ? business.ml_lead_score.toFixed(1) : 'N/A'}</div>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">${mlStatusBadge}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function getStatusBadge(status) {
+      const badges = {
+        'Hot': '<span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-medium">Hot</span>',
+        'Warm': '<span class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm font-medium">Warm</span>',
+        'Cold': '<span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Cold</span>'
+      };
+      return badges[status] || status;
+    }
+
+    function showBusinessDetail(business) {
+      const modal = document.getElementById('detail-modal');
+      const businessName = document.getElementById('modal-business-name');
+      const content = document.getElementById('modal-content');
+
+      businessName.textContent = business.business_name;
+
+      // Get pillar scores
+      const pillarScores = {
+        'Google Presence': business.score_google_presence || 0,
+        'Instagram Activity': business.score_instagram_activity || 0,
+        'Website Status': business.score_website_status || 0,
+        'WhatsApp Availability': business.score_whatsapp_availability || 0,
+        'Menu/Catalog': business.score_menu_catalog || 0,
+        'Branding Quality': business.score_branding_quality || 0,
+        'Online Ordering': business.score_online_ordering || 0
+      };
+
+      const maxPoints = {
+        'Google Presence': 20,
+        'Instagram Activity': 20,
+        'Website Status': 15,
+        'WhatsApp Availability': 15,
+        'Menu/Catalog': 10,
+        'Branding Quality': 10,
+        'Online Ordering': 10
+      };
+
+      let pillarHtml = '<div class="space-y-4 mb-6">';
+      for (const [pillar, score] of Object.entries(pillarScores)) {
+        const max = maxPoints[pillar] || 10;
+        const percentage = (score / max) * 100;
+        pillarHtml += `
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-sm font-medium text-gray-700">${pillar}</span>
+              <span class="text-sm text-gray-600">${score}/${max}</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-indigo-600 h-2 rounded-full transition-all" style="width: ${percentage}%"></div>
+            </div>
+          </div>
+        `;
+      }
+      pillarHtml += '</div>';
+
+      // Re-calculate weaknesses (simplified for display)
+      const weaknesses = [];
+      for (const [pillar, score] of Object.entries(pillarScores)) {
+        const max = maxPoints[pillar] || 10;
+        if (score < max * 0.5) {
+          const serviceMap = {
+            'Google Presence': 'Google Business Profile Optimization',
+            'Instagram Activity': 'Instagram Growth & Content Strategy',
+            'Website Status': 'Website Development & Optimization',
+            'WhatsApp Availability': 'WhatsApp Business Setup & Automation',
+            'Menu/Catalog': 'Digital Menu/Catalog Creation',
+            'Branding Quality': 'Brand Identity & Visual Design',
+            'Online Ordering': 'E-commerce & Online Ordering System'
+          };
+          weaknesses.push({
+            pillar,
+            score,
+            max,
+            service: serviceMap[pillar] || 'General Digital Marketing'
+          });
+        }
+      }
+
+      let weaknessesHtml = '';
+      if (weaknesses.length > 0) {
+        weaknessesHtml = '<div class="mb-6"><h4 class="text-lg font-semibold text-gray-900 mb-3">Detected Weaknesses</h4><div class="space-y-2">';
+        weaknesses.forEach(w => {
+          weaknessesHtml += `
+            <div class="bg-red-50 border border-red-200 rounded-lg p-3">
+              <div class="font-medium text-red-900">${w.pillar}</div>
+              <div class="text-sm text-red-700">Score: ${w.score}/${w.max} - Service: ${w.service}</div>
+            </div>
+          `;
+        });
+        weaknessesHtml += '</div></div>';
+      }
+
+      // Generate DM based on biggest weakness
+      let dmHtml = '';
+      if (weaknesses.length > 0) {
+        const biggest = weaknesses.reduce((a, b) => (b.max - b.score) > (a.max - a.score) ? b : a);
+        const dm = `Hi ${business.business_name}!\n\nI noticed your ${biggest.pillar} could use some improvement (currently at ${biggest.score}/${biggest.max}). At B Socio, we specialize in ${biggest.service} to help businesses like yours stand out online.\n\nWould you be open to a quick chat about how we can help?`;
+        dmHtml = `
+          <div>
+            <h4 class="text-lg font-semibold text-gray-900 mb-3">Personalized DM</h4>
+            <textarea class="w-full p-3 border border-gray-300 rounded-lg text-sm" rows="4" readonly>${dm}</textarea>
+          </div>
+        `;
+      }
+
+      content.innerHTML = `
+        <div class="grid grid-cols-3 gap-4 mb-6">
+          <div class="bg-indigo-50 rounded-lg p-4 text-center">
+            <div class="text-2xl font-bold text-indigo-600">${business.total_score}/100</div>
+            <div class="text-sm text-indigo-700">Total Score</div>
+          </div>
+          <div class="bg-indigo-50 rounded-lg p-4 text-center">
+            <div class="text-2xl font-bold text-indigo-600">${getStatusBadge(business.status)}</div>
+            <div class="text-sm text-indigo-700">Status</div>
+          </div>
+          <div class="bg-indigo-50 rounded-lg p-4 text-center">
+            <div class="text-2xl font-bold text-indigo-600">${weaknesses.length}</div>
+            <div class="text-sm text-indigo-700">Weaknesses</div>
+          </div>
+        </div>
+        ${pillarHtml}
+        ${weaknessesHtml}
+        ${dmHtml}
+      `;
+
+      modal.classList.remove('hidden');
+    }
+
+    // Close modal
+    document.getElementById('close-modal').addEventListener('click', () => {
+      document.getElementById('detail-modal').classList.add('hidden');
+    });
+
+    document.getElementById('detail-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'detail-modal') {
+        document.getElementById('detail-modal').classList.add('hidden');
+      }
+    });
+
+    // Download functionality
+    document.getElementById('download-btn').addEventListener('click', () => {
+      if (!scoredData) return;
+
+      const headers = Object.keys(scoredData[0]).join(',');
+      const rows = scoredData.map(row => Object.values(row).join(',')).join('\n');
+      const csv = headers + '\n' + rows;
+
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'scored_businesses.csv';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+  </script>
+
+  <!-- Footer -->
+  <div id="footer-container"></div>
+
+  <script>
+    const API_BASE = '/api';
+
+    // Load navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('navbar-container').innerHTML = html;
+      });
+
+    // Load footer
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+      });
+
+    function setupUploadListeners() {
+      dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('dragover');
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+          handleFileUpload(files[0]);
+        }
+      });
+
+      fileInput.addEventListener('change', (e) => {
+        if (e.target.files.length > 0) {
+          handleFileUpload(e.target.files[0]);
+        }
+      });
+    }
+
+    setupUploadListeners();
+  </script>
+</body>
+</html>

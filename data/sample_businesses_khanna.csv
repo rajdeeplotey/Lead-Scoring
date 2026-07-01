@@ -1,0 +1,21 @@
+business_id,business_name,category,location,phone_available,whatsapp_available,instagram_active,instagram_followers,facebook_active,website_status,google_rating,google_reviews_count,menu_catalog_available,branding_quality,years_in_business,online_orders_accepted
+1,Khanna Sweets & Bakers,Sweet Shop,"Khanna, Ludhiana",Yes,Yes,No,120,Yes,None,4.1,86,No,Low,15,No
+2,Royal Cloth House,Clothing Store,"Khanna, Ludhiana",Yes,No,Yes,2400,Yes,Basic,4.3,142,Yes,Medium,10,No
+3,Singh Hardware Store,Hardware,"Khanna, Ludhiana",Yes,No,No,0,No,None,3.8,34,No,Low,20,No
+4,Glow Up Salon & Spa,Beauty Salon,"Khanna, Ludhiana",Yes,Yes,Yes,5600,Yes,Good,4.6,210,Yes,High,4,Yes
+5,Khanna Electronics Hub,Electronics,"Khanna, Ludhiana",Yes,Yes,Yes,890,Yes,Basic,4.0,98,Yes,Medium,8,No
+6,Punjabi Tadka Restaurant,Restaurant,"Khanna, Ludhiana",Yes,Yes,Yes,3200,Yes,Basic,4.2,310,Yes,Medium,6,Yes
+7,FitZone Gym,Gym & Fitness,"Khanna, Ludhiana",Yes,Yes,Yes,1800,Yes,None,4.4,156,No,Medium,3,No
+8,Maa Durga Kirana Store,Grocery,"Khanna, Ludhiana",Yes,No,No,0,No,None,3.5,22,No,Low,25,No
+9,Trendz Footwear,Footwear Store,"Khanna, Ludhiana",Yes,Yes,Yes,650,No,None,4.0,64,No,Low,5,No
+10,Khanna Dental Care,Healthcare/Dental,"Khanna, Ludhiana",Yes,Yes,Yes,420,Yes,Basic,4.7,189,No,Medium,7,Yes
+11,New Look Furniture,Furniture Store,"Khanna, Ludhiana",Yes,No,No,75,Yes,None,3.9,41,Yes,Low,12,No
+12,Khanna Photography Studio,Photography,"Khanna, Ludhiana",Yes,Yes,Yes,4100,Yes,Good,4.8,95,Yes,High,9,Yes
+13,Apna Punjab Dhaba,Restaurant,"Khanna, Ludhiana",Yes,Yes,No,300,Yes,None,4.1,250,No,Low,18,No
+14,SmartKidz Play School,Education/Preschool,"Khanna, Ludhiana",Yes,Yes,Yes,980,Yes,Basic,4.5,72,No,Medium,5,No
+15,Khanna Auto Spares,Automobile Parts,"Khanna, Ludhiana",Yes,No,No,0,No,None,3.7,28,No,Low,22,No
+16,Style Studio Boutique,Clothing/Boutique,"Khanna, Ludhiana",Yes,Yes,Yes,7300,Yes,Good,4.6,180,Yes,High,6,Yes
+17,Khanna Mobile Repair Center,Mobile Repair,"Khanna, Ludhiana",Yes,Yes,No,210,Yes,None,3.9,53,No,Low,9,No
+18,Green Leaf Organic Store,Organic/Grocery,"Khanna, Ludhiana",Yes,Yes,Yes,1500,Yes,Basic,4.4,67,Yes,Medium,3,Yes
+19,Khanna Jewellers,Jewellery Store,"Khanna, Ludhiana",Yes,No,Yes,3600,Yes,None,4.5,140,Yes,Medium,30,No
+20,Pure Bliss Yoga & Wellness,Wellness/Yoga,"Khanna, Ludhiana",Yes,Yes,Yes,2100,Yes,None,4.7,88,No,Medium,2,No

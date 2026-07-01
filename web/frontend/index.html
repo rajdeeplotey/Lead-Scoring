@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B Socio - AI Lead Scoring</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-white pt-24">
+  <!-- Navbar -->
+  <div id="navbar-container"></div>
+
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="background.jpg" alt="Background" class="w-full h-full object-cover">
+    </div>
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+      <div class="text-center fade-up">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
+          Score Smarter.
+          <span class="block text-[#93A0CD]">Spot the Right Business</span>
+        </h1>
+        <p class="text-lg md:text-xl text-[#93A0CD] mb-8 max-w-2xl mx-auto leading-relaxed">
+          Transform how you identify and prioritize leads with our intelligent scoring system.
+          Analyze digital presence, social media activity, and online engagement in seconds.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a id="try-demo-btn" href="upload.html" class="btn-primary inline-flex items-center justify-center">
+            Try Demo
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+          <a id="manual-entry-btn" href="manual-entry.html" class="btn-secondary inline-flex items-center justify-center">
+            Manual Entry
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="relative py-20">
+    <div class="absolute inset-0">
+      <img src="2.jpg" alt="Background" class="w-full h-full object-cover">
+    </div>
+    <div class="absolute inset-0 bg-white/90"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#050B49] mb-4">How It Works</h2>
+        <p class="text-lg text-[#555555] max-w-2xl mx-auto">
+          Our AI analyzes multiple data points to give you actionable lead insights
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <!-- Feature 1 -->
+        <div class="card fade-up" style="animation-delay: 0.1s;">
+          <div class="w-12 h-12 bg-gradient-to-br from-[#1343B9] to-[#0E81F2] rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-[#050B49] mb-3">Data Analysis</h3>
+          <p class="text-[#555555] leading-relaxed">
+            Upload your business data or enter details manually. Our system processes Google ratings, social media presence, website quality, and more.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="card fade-up" style="animation-delay: 0.2s;">
+          <div class="w-12 h-12 bg-gradient-to-br from-[#0E81F2] to-[#4E39E8] rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-[#050B49] mb-3">AI Scoring</h3>
+          <p class="text-[#555555] leading-relaxed">
+            Our rule-based engine and ML models work together to assign scores from 0-100 based on 8 key digital presence pillars.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="card fade-up" style="animation-delay: 0.3s;">
+          <div class="w-12 h-12 bg-gradient-to-br from-[#4E39E8] to-[#1343B9] rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-[#050B49] mb-3">Actionable Insights</h3>
+          <p class="text-[#555555] leading-relaxed">
+            Get categorized leads (Hot/Warm/Cold), identified weaknesses, personalized outreach messages, and service recommendations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 section-alt">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-up">
+      <h2 class="text-3xl md:text-4xl font-bold text-[#050B49] mb-6">Ready to Score Your Leads?</h2>
+      <p class="text-lg text-[#555555] mb-8">
+        Start analyzing your business leads today with our AI Scoring system.
+      </p>
+      <a id="get-started-btn" href="upload.html" class="btn-primary inline-flex items-center justify-center">
+        Get Started Free
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer-container"></div>
+
+  <script>
+    // Load navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('navbar-container').innerHTML = html;
+      });
+
+    // Load footer
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+      });
+  </script>
+</body>
+</html>

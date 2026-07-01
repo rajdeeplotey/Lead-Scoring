@@ -1,0 +1,151 @@
+business_id,business_name,category,location,phone_available,whatsapp_available,instagram_active,instagram_followers,facebook_active,website_status,google_rating,google_reviews_count,menu_catalog_available,branding_quality,years_in_business,online_orders_accepted
+1,Sharma Stationery Mart,Stationery Shop,"Khanna, Ludhiana",Yes,Yes,Yes,656,Yes,None,3.9,99,No,Low,8,No
+2,Smart Pet Shop,Pet Store,"Machhiwara, Ludhiana",Yes,No,Yes,81,No,None,3.3,53,No,Low,11,No
+3,Elite Photography Studio,Photography,"Doraha, Ludhiana",Yes,Yes,No,193,Yes,Basic,4.7,285,Yes,High,1,Yes
+4,Golden Properties,Real Estate Agency,Ludhiana City,Yes,Yes,Yes,8833,Yes,Basic,4.4,236,Yes,High,2,Yes
+5,Smart Restaurant,Restaurant,"Samrala, Ludhiana",Yes,No,No,0,No,None,4.0,54,Yes,Medium,18,No
+6,City Hardware Store,Hardware,"Khanna Rural, Ludhiana",Yes,Yes,Yes,7266,Yes,Basic,4.5,387,Yes,High,7,No
+7,Green Play School,Education/Preschool,"Samrala, Ludhiana",Yes,Yes,Yes,2898,Yes,Basic,4.8,132,Yes,High,8,Yes
+8,Capital Jewellers,Jewellery Store,"Khanna, Ludhiana",Yes,No,No,196,Yes,None,4.1,156,Yes,Medium,10,No
+9,Punjab Properties,Real Estate Agency,"Mullanpur, Ludhiana",Yes,Yes,Yes,6988,Yes,Basic,4.4,371,No,High,8,Yes
+10,Lovely Photography Studio,Photography,"Doraha, Ludhiana",Yes,No,Yes,374,No,None,3.9,54,No,Low,25,No
+11,Capital Organic Store,Organic/Grocery,"Khanna Rural, Ludhiana",Yes,Yes,No,51,No,None,4.3,135,Yes,Medium,5,Yes
+12,Sunrise Hardware Store,Hardware,"Khanna, Ludhiana",Yes,Yes,Yes,541,Yes,Good,4.4,58,No,Low,17,Yes
+13,Happy Electronics Hub,Electronics,"Khanna Rural, Ludhiana",Yes,Yes,Yes,686,Yes,None,4.1,159,No,Low,5,Yes
+14,Sunrise Travels,Travel Agency,Ludhiana City,Yes,No,No,0,Yes,None,4.0,33,No,Medium,11,No
+15,Om Jewellers,Jewellery Store,"Khanna, Ludhiana",No,Yes,Yes,5978,Yes,Good,4.9,184,Yes,High,5,No
+16,Golden Boutique,Clothing/Boutique,"Machhiwara, Ludhiana",Yes,No,No,124,Yes,None,4.5,178,Yes,Medium,3,No
+17,Fresh Organic Store,Organic/Grocery,"Mullanpur, Ludhiana",No,Yes,Yes,304,Yes,Basic,3.6,41,No,Low,27,No
+18,Pure Tailors,Tailoring Shop,"Khanna Rural, Ludhiana",No,Yes,No,61,Yes,None,4.3,157,Yes,Medium,4,Yes
+19,Pure Bakery,Bakery,Ludhiana City,Yes,No,No,0,No,Basic,3.5,15,No,Low,17,No
+20,Guru Nanak Stationery Mart,Stationery Shop,"Khanna, Ludhiana",Yes,No,Yes,850,Yes,Basic,4.3,79,Yes,Medium,12,Yes
+21,Capital Stationery Mart,Stationery Shop,"Doraha, Ludhiana",Yes,No,Yes,2034,No,None,4.0,73,No,Low,16,No
+22,Smart Auto Spares,Automobile Parts,"Khanna, Ludhiana",No,No,Yes,18,No,None,3.3,13,Yes,Low,9,No
+23,Urban Gym,Gym & Fitness,"Samrala, Ludhiana",Yes,Yes,No,158,No,Good,4.0,81,No,Medium,15,Yes
+24,Fresh Travels,Travel Agency,"Payal, Ludhiana",Yes,Yes,Yes,4032,Yes,Good,4.4,119,No,Medium,8,Yes
+25,Modern Kirana Store,Grocery,"Khanna, Ludhiana",Yes,Yes,Yes,1443,Yes,Basic,4.3,177,Yes,Low,10,Yes
+26,New Look Footwear,Footwear Store,Ludhiana City,Yes,No,Yes,2394,Yes,Basic,3.9,51,No,Low,8,No
+27,Urban Hardware Store,Hardware,"Payal, Ludhiana",Yes,Yes,No,129,Yes,None,4.1,115,No,Low,14,No
+28,Elite Restaurant,Restaurant,"Khanna Rural, Ludhiana",Yes,Yes,No,0,No,None,3.8,34,No,Low,24,No
+29,Punjab Travels,Travel Agency,Ludhiana City,Yes,No,Yes,384,Yes,None,3.9,14,Yes,Low,23,No
+30,Singh Properties,Real Estate Agency,"Sahnewal, Ludhiana",Yes,Yes,No,126,Yes,None,4.3,67,No,Low,18,No
+31,Modern Jewellers,Jewellery Store,Ludhiana City,Yes,No,No,152,Yes,Basic,4.1,169,Yes,High,16,No
+32,Capital Travels,Travel Agency,"Sahnewal, Ludhiana",Yes,No,Yes,2435,Yes,None,4.1,113,Yes,Medium,4,Yes
+33,Classic Kirana Store,Grocery,"Jagraon, Ludhiana",Yes,Yes,Yes,2003,Yes,Basic,4.1,45,No,Medium,14,No
+34,Golden Photography Studio,Photography,"Machhiwara, Ludhiana",No,Yes,Yes,6473,Yes,Good,4.6,239,Yes,Low,6,Yes
+35,Happy Play School,Education/Preschool,"Jagraon, Ludhiana",Yes,No,Yes,5227,Yes,Good,4.4,319,Yes,High,1,Yes
+36,City Furniture,Furniture Store,"Sahnewal, Ludhiana",Yes,No,No,0,No,None,3.3,6,No,Low,19,No
+37,Lucky Hardware Store,Hardware,"Khanna, Ludhiana",No,Yes,Yes,3248,Yes,Good,4.4,211,Yes,Medium,6,Yes
+38,Happy Bakery,Bakery,Ludhiana City,Yes,Yes,Yes,4555,Yes,Good,4.6,201,Yes,High,11,Yes
+39,Lucky Pet Shop,Pet Store,"Doraha, Ludhiana",Yes,Yes,No,400,Yes,Good,4.8,135,Yes,Medium,7,No
+40,Trendy Salon & Spa,Beauty Salon,"Payal, Ludhiana",Yes,No,Yes,2437,No,None,4.4,177,No,Medium,10,Yes
+41,Om Kirana Store,Grocery,Ludhiana City,Yes,No,No,0,No,None,3.6,25,No,Low,16,No
+42,Friends Bakery,Bakery,"Doraha, Ludhiana",Yes,Yes,Yes,1964,Yes,Basic,4.3,165,Yes,Low,11,Yes
+43,Modern Pet Shop,Pet Store,"Doraha, Ludhiana",Yes,Yes,Yes,1654,Yes,Basic,4.0,99,Yes,Low,5,No
+44,Friends Properties,Real Estate Agency,"Jagraon, Ludhiana",Yes,No,No,0,No,None,4.1,58,No,Low,13,No
+45,Khanna Pet Shop,Pet Store,"Doraha, Ludhiana",Yes,No,No,0,No,None,3.3,5,No,Low,22,No
+46,Star Cloth House,Clothing Store,"Sahnewal, Ludhiana",Yes,No,No,0,No,None,3.9,24,Yes,Low,25,No
+47,Elite Bakery,Bakery,"Khanna Rural, Ludhiana",Yes,No,No,0,No,Good,3.5,44,Yes,Medium,11,No
+48,Style Gym,Gym & Fitness,"Samrala, Ludhiana",Yes,Yes,No,0,Yes,None,3.8,35,No,Low,30,No
+49,Singh Boutique,Clothing/Boutique,"Samrala, Ludhiana",Yes,Yes,Yes,3620,Yes,Good,4.8,236,Yes,Medium,3,No
+50,Om Bakery,Bakery,"Khanna Rural, Ludhiana",Yes,Yes,Yes,5297,No,Good,4.6,141,Yes,High,12,Yes
+51,Royal Footwear,Footwear Store,Ludhiana City,Yes,No,No,0,Yes,None,3.9,41,Yes,Medium,23,No
+52,Fresh Boutique,Clothing/Boutique,"Doraha, Ludhiana",Yes,No,No,0,Yes,None,3.5,47,No,Low,21,No
+53,Urban Dental Care,Healthcare/Dental,"Machhiwara, Ludhiana",Yes,Yes,Yes,4648,Yes,Good,4.9,100,Yes,High,7,Yes
+54,Green Organic Store,Organic/Grocery,"Khanna Rural, Ludhiana",Yes,Yes,Yes,6499,Yes,Basic,4.9,348,Yes,High,10,No
+55,Punjab Pet Shop,Pet Store,"Doraha, Ludhiana",Yes,Yes,No,29,Yes,None,4.4,167,No,Low,10,No
+56,Maa Durga Mobile Repair Center,Mobile Repair,"Samrala, Ludhiana",Yes,Yes,Yes,859,No,None,4.4,146,Yes,Medium,10,No
+57,Happy Dental Care,Healthcare/Dental,"Doraha, Ludhiana",Yes,Yes,Yes,5658,Yes,Basic,4.7,378,Yes,High,4,No
+58,Pure Kirana Store,Grocery,"Machhiwara, Ludhiana",Yes,Yes,No,0,No,None,3.5,47,No,Low,12,No
+59,Khanna Cloth House,Clothing Store,"Mullanpur, Ludhiana",Yes,Yes,Yes,2816,Yes,Good,4.8,309,No,High,2,Yes
+60,Sunrise Footwear,Footwear Store,"Khanna Rural, Ludhiana",Yes,No,No,136,Yes,None,4.3,164,No,Low,4,Yes
+61,Fresh Tailors,Tailoring Shop,"Doraha, Ludhiana",Yes,Yes,Yes,7191,Yes,Basic,4.4,253,No,Low,1,Yes
+62,Trendy Photography Studio,Photography,"Jagraon, Ludhiana",Yes,No,Yes,89,Yes,Basic,3.8,20,No,Low,15,No
+63,Apna Footwear,Footwear Store,"Doraha, Ludhiana",Yes,Yes,Yes,947,Yes,Good,4.5,116,No,Medium,10,No
+64,City Dental Care,Healthcare/Dental,"Machhiwara, Ludhiana",Yes,Yes,Yes,4423,No,Basic,5.0,302,Yes,High,11,No
+65,Fresh Cloth House,Clothing Store,"Khanna Rural, Ludhiana",Yes,No,No,58,Yes,None,4.2,104,No,Medium,6,No
+66,Style Stationery Mart,Stationery Shop,"Khanna, Ludhiana",Yes,No,No,0,Yes,None,3.9,16,No,Medium,19,No
+67,Om Footwear,Footwear Store,"Jagraon, Ludhiana",Yes,No,No,0,No,None,3.3,9,No,Medium,29,No
+68,Capital Play School,Education/Preschool,"Mullanpur, Ludhiana",Yes,Yes,No,0,No,None,3.8,42,No,Low,19,No
+69,Maa Durga Kirana Store,Grocery,"Khanna, Ludhiana",No,Yes,Yes,558,Yes,Basic,4.3,144,Yes,Low,3,Yes
+70,Sharma Mobile Repair Center,Mobile Repair,Ludhiana City,Yes,No,No,0,No,None,3.7,42,No,Low,21,No
+71,Elite Mobile Repair Center,Mobile Repair,"Machhiwara, Ludhiana",Yes,Yes,Yes,5642,No,Good,4.4,288,Yes,High,6,Yes
+72,City Footwear,Footwear Store,Ludhiana City,Yes,Yes,Yes,7238,Yes,None,4.9,224,No,High,4,Yes
+73,Smart Properties,Real Estate Agency,"Samrala, Ludhiana",Yes,Yes,No,152,Yes,Basic,3.9,73,No,Medium,5,No
+74,Khanna Sweets & Bakers,Sweet Shop,"Khanna, Ludhiana",Yes,No,Yes,135,Yes,None,3.7,52,Yes,Low,19,No
+75,Apna Salon & Spa,Beauty Salon,"Mullanpur, Ludhiana",Yes,No,No,0,No,None,3.8,6,Yes,Low,20,No
+76,Maa Durga Salon & Spa,Beauty Salon,"Sahnewal, Ludhiana",Yes,No,Yes,140,No,None,3.8,29,No,Low,22,No
+77,Sharma Auto Spares,Automobile Parts,Ludhiana City,Yes,Yes,Yes,3761,Yes,Good,4.6,332,Yes,High,6,Yes
+78,Star Tailors,Tailoring Shop,"Payal, Ludhiana",Yes,Yes,Yes,2699,Yes,None,4.8,166,Yes,High,9,Yes
+79,Sharma Tailors,Tailoring Shop,"Machhiwara, Ludhiana",Yes,No,No,0,No,Basic,3.7,27,No,Low,12,No
+80,Capital Kirana Store,Grocery,Ludhiana City,Yes,Yes,No,0,Yes,None,3.7,54,No,Low,28,No
+81,Fresh Bakery,Bakery,"Doraha, Ludhiana",Yes,No,No,0,Yes,None,3.3,47,No,Low,28,No
+82,Happy Hardware Store,Hardware,"Mullanpur, Ludhiana",Yes,No,No,0,No,None,3.7,10,No,Low,27,Yes
+83,Star Hardware Store,Hardware,"Sahnewal, Ludhiana",Yes,Yes,Yes,2398,Yes,None,4.0,164,No,Medium,9,No
+84,New Look Bakery,Bakery,"Khanna, Ludhiana",No,No,No,0,Yes,None,3.6,32,No,Low,30,No
+85,Urban Jewellers,Jewellery Store,"Payal, Ludhiana",Yes,Yes,Yes,39,No,None,3.7,50,No,Low,20,Yes
+86,Punjab Furniture,Furniture Store,"Khanna Rural, Ludhiana",Yes,Yes,Yes,733,Yes,Basic,4.2,141,No,Medium,9,Yes
+87,Singh Restaurant,Restaurant,"Mullanpur, Ludhiana",Yes,Yes,No,89,No,Basic,4.4,100,Yes,Low,7,No
+88,Lucky Properties,Real Estate Agency,Ludhiana City,Yes,No,No,0,No,None,4.0,41,No,High,18,No
+89,Sunrise Stationery Mart,Stationery Shop,"Jagraon, Ludhiana",Yes,No,No,151,Yes,Basic,4.0,155,Yes,Medium,11,Yes
+90,Elite Hardware Store,Hardware,"Khanna Rural, Ludhiana",Yes,Yes,No,10,Yes,Basic,4.3,122,No,Medium,3,No
+91,Friends Furniture,Furniture Store,Ludhiana City,Yes,Yes,Yes,2099,Yes,Basic,4.1,112,Yes,Medium,3,No
+92,Singh Stationery Mart,Stationery Shop,"Payal, Ludhiana",Yes,No,No,0,No,Basic,4.0,26,Yes,Low,19,No
+93,Friends Stationery Mart,Stationery Shop,"Machhiwara, Ludhiana",Yes,Yes,No,0,No,None,3.3,49,No,Low,29,No
+94,Style Hardware Store,Hardware,"Machhiwara, Ludhiana",Yes,Yes,No,87,No,Basic,4.0,75,Yes,Low,5,No
+95,Happy Jewellers,Jewellery Store,"Mullanpur, Ludhiana",Yes,No,Yes,192,Yes,None,3.8,44,No,Low,22,Yes
+96,Urban Photography Studio,Photography,"Samrala, Ludhiana",Yes,Yes,Yes,3916,Yes,Basic,4.9,340,No,Medium,11,No
+97,Apna Boutique,Clothing/Boutique,"Doraha, Ludhiana",Yes,Yes,Yes,3635,Yes,Basic,4.5,346,No,High,2,Yes
+98,Sharma Organic Store,Organic/Grocery,"Doraha, Ludhiana",Yes,No,No,0,No,None,4.0,57,No,Low,8,No
+99,Guru Nanak Play School,Education/Preschool,"Payal, Ludhiana",No,No,Yes,50,No,None,3.9,13,Yes,Medium,23,No
+100,Lucky Electronics Hub,Electronics,"Sahnewal, Ludhiana",Yes,Yes,Yes,912,Yes,Basic,4.2,68,No,Low,5,Yes
+101,Style Auto Spares,Automobile Parts,"Khanna Rural, Ludhiana",Yes,No,Yes,367,Yes,Basic,4.3,114,Yes,Medium,9,No
+102,Urban Restaurant,Restaurant,Ludhiana City,Yes,No,Yes,2379,Yes,None,4.1,139,No,Low,2,No
+103,Green Hardware Store,Hardware,"Samrala, Ludhiana",Yes,No,No,85,Yes,None,4.0,84,No,Medium,17,No
+104,Singh Electronics Hub,Electronics,"Sahnewal, Ludhiana",Yes,No,No,0,Yes,None,3.6,57,No,Low,28,No
+105,Capital Photography Studio,Photography,"Khanna, Ludhiana",Yes,Yes,Yes,5276,Yes,Good,4.6,195,Yes,High,9,Yes
+106,Trendy Hardware Store,Hardware,Ludhiana City,No,Yes,Yes,720,Yes,Basic,4.0,149,Yes,Medium,16,Yes
+107,Star Photography Studio,Photography,"Khanna, Ludhiana",Yes,No,No,0,No,Basic,3.3,43,No,Low,12,No
+108,Style Properties,Real Estate Agency,"Payal, Ludhiana",No,Yes,Yes,230,No,None,3.9,41,No,Low,18,No
+109,Sharma Kirana Store,Grocery,"Khanna, Ludhiana",Yes,Yes,Yes,1372,No,Basic,4.0,113,No,High,8,Yes
+110,Apna Hardware Store,Hardware,"Jagraon, Ludhiana",Yes,Yes,Yes,8926,No,Good,4.8,381,Yes,High,3,Yes
+111,Style Pet Shop,Pet Store,"Jagraon, Ludhiana",Yes,Yes,Yes,3137,Yes,Good,4.6,393,Yes,High,9,Yes
+112,Singh Hardware Store,Hardware,"Doraha, Ludhiana",Yes,No,No,0,No,None,3.3,25,No,Low,29,No
+113,Lovely Electronics Hub,Electronics,"Mullanpur, Ludhiana",Yes,No,Yes,526,No,Basic,4.0,81,Yes,Medium,13,No
+114,Lovely Organic Store,Organic/Grocery,"Doraha, Ludhiana",Yes,Yes,Yes,3025,Yes,Good,4.4,186,Yes,High,3,Yes
+115,Lovely Travels,Travel Agency,"Khanna Rural, Ludhiana",No,Yes,No,0,Yes,Basic,3.9,21,No,Medium,21,No
+116,Maa Durga Sweets & Bakers,Sweet Shop,"Mullanpur, Ludhiana",No,No,No,0,No,None,3.3,8,No,Low,22,No
+117,Khanna Bakery,Bakery,"Payal, Ludhiana",Yes,No,Yes,5266,Yes,Basic,4.7,263,Yes,Medium,8,Yes
+118,New Look Salon & Spa,Beauty Salon,"Doraha, Ludhiana",Yes,Yes,No,461,Yes,Basic,4.7,260,Yes,Medium,9,Yes
+119,Maa Durga Dental Care,Healthcare/Dental,"Khanna, Ludhiana",Yes,No,No,0,No,None,3.5,43,No,Low,23,No
+120,Capital Sweets & Bakers,Sweet Shop,Ludhiana City,Yes,No,No,93,Yes,None,4.2,132,No,Low,18,No
+121,Star Jewellers,Jewellery Store,"Khanna Rural, Ludhiana",Yes,No,Yes,1688,Yes,None,3.9,170,Yes,Low,3,Yes
+122,Shree Furniture,Furniture Store,"Sahnewal, Ludhiana",Yes,No,Yes,1604,Yes,Good,4.3,116,No,Medium,18,No
+123,Pure Pet Shop,Pet Store,"Doraha, Ludhiana",Yes,Yes,Yes,2006,Yes,Basic,4.3,46,No,Low,9,No
+124,Maa Durga Yoga & Wellness,Wellness/Yoga,"Jagraon, Ludhiana",Yes,No,Yes,1292,Yes,Good,3.9,44,Yes,Medium,15,No
+125,Guru Nanak Auto Spares,Automobile Parts,"Khanna Rural, Ludhiana",Yes,Yes,Yes,3131,Yes,Good,5.0,344,Yes,Medium,3,Yes
+126,Sunrise Jewellers,Jewellery Store,"Mullanpur, Ludhiana",Yes,No,No,0,No,None,3.4,20,No,Low,17,No
+127,City Pet Shop,Pet Store,"Sahnewal, Ludhiana",Yes,No,No,0,Yes,None,3.8,29,No,Low,19,No
+128,Golden Electronics Hub,Electronics,"Khanna, Ludhiana",Yes,No,No,0,Yes,None,3.4,39,No,Low,16,No
+129,Modern Bakery,Bakery,"Samrala, Ludhiana",Yes,Yes,No,0,Yes,None,3.6,48,No,Low,25,No
+130,Trendy Restaurant,Restaurant,"Sahnewal, Ludhiana",Yes,No,Yes,542,No,None,4.2,176,No,High,3,No
+131,Lovely Restaurant,Restaurant,"Jagraon, Ludhiana",Yes,Yes,Yes,3526,No,Good,4.9,119,Yes,High,2,No
+132,Golden Furniture,Furniture Store,"Sahnewal, Ludhiana",Yes,Yes,Yes,8971,Yes,Basic,4.9,269,Yes,High,5,Yes
+133,Happy Sweets & Bakers,Sweet Shop,"Payal, Ludhiana",Yes,Yes,Yes,7232,Yes,Good,4.7,144,Yes,Medium,3,Yes
+134,Royal Kirana Store,Grocery,"Doraha, Ludhiana",Yes,No,No,0,No,None,3.4,28,No,Low,11,No
+135,Classic Restaurant,Restaurant,"Mullanpur, Ludhiana",Yes,Yes,Yes,7232,No,Basic,4.7,212,No,High,8,Yes
+136,Green Bakery,Bakery,"Machhiwara, Ludhiana",Yes,No,No,55,No,Basic,4.2,60,No,Medium,13,Yes
+137,Sharma Yoga & Wellness,Wellness/Yoga,"Khanna, Ludhiana",Yes,Yes,Yes,3347,Yes,Good,4.4,205,Yes,High,9,Yes
+138,Apna Cloth House,Clothing Store,"Jagraon, Ludhiana",Yes,Yes,Yes,1562,No,None,4.4,95,No,Low,13,No
+139,New Look Jewellers,Jewellery Store,Ludhiana City,Yes,Yes,Yes,3109,Yes,Good,4.8,315,Yes,High,8,No
+140,Classic Play School,Education/Preschool,Ludhiana City,Yes,Yes,No,89,Yes,Good,4.1,72,No,Low,2,No
+141,Apna Dental Care,Healthcare/Dental,"Mullanpur, Ludhiana",Yes,Yes,Yes,935,Yes,Good,4.3,68,Yes,Medium,2,Yes
+142,Sharma Hardware Store,Hardware,"Khanna Rural, Ludhiana",Yes,No,Yes,379,Yes,None,3.7,53,No,Low,24,No
+143,Fresh Kirana Store,Grocery,"Khanna Rural, Ludhiana",Yes,No,No,0,Yes,None,3.8,19,No,Low,25,No
+144,Style Travels,Travel Agency,"Machhiwara, Ludhiana",Yes,Yes,Yes,1861,No,None,4.1,78,Yes,Low,17,Yes
+145,Golden Kirana Store,Grocery,"Jagraon, Ludhiana",Yes,Yes,No,285,Yes,Basic,4.5,269,Yes,High,6,Yes
+146,Om Travels,Travel Agency,"Samrala, Ludhiana",Yes,No,Yes,37,Yes,None,3.9,40,No,Low,18,No
+147,City Sweets & Bakers,Sweet Shop,"Samrala, Ludhiana",Yes,No,Yes,3987,Yes,Good,4.6,222,Yes,High,7,Yes
+148,Green Stationery Mart,Stationery Shop,"Doraha, Ludhiana",Yes,No,Yes,369,No,None,4.0,28,No,Low,15,No
+149,Star Sweets & Bakers,Sweet Shop,"Mullanpur, Ludhiana",Yes,Yes,Yes,4702,Yes,Good,4.5,381,Yes,High,5,No
+150,Happy Mobile Repair Center,Mobile Repair,"Sahnewal, Ludhiana",Yes,Yes,Yes,2300,Yes,Basic,4.5,55,No,Medium,4,No
