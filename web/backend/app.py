@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'src'))
 from data_prep import encode_yes_no_columns, encode_website_status, encode_branding_quality
 from scoring_engine import score_dataframe, score_business
 from ml_model import add_ml_predictions
-from utils import clean_for_json, clean_dict_for_json
+from .utils import clean_for_json, clean_dict_for_json
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-secret-key')
