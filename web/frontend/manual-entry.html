@@ -58,6 +58,7 @@
                 <div>
                   <label class="block text-sm font-medium text-[#555555] mb-2">Phone Available</label>
                   <select id="phone_available" class="form-input">
+                    <option value="">Select</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                   </select>
@@ -65,6 +66,7 @@
                 <div>
                   <label class="block text-sm font-medium text-[#555555] mb-2">WhatsApp Available</label>
                   <select id="whatsapp_available" class="form-input">
+                    <option value="">Select</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                   </select>
@@ -74,6 +76,7 @@
                 <div>
                   <label class="block text-sm font-medium text-[#555555] mb-2">Instagram Active</label>
                   <select id="instagram_active" class="form-input">
+                    <option value="">Select</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                   </select>
@@ -86,6 +89,7 @@
               <div>
                 <label class="block text-sm font-medium text-[#555555] mb-2">Facebook Active</label>
                 <select id="facebook_active" class="form-input">
+                  <option value="">Select</option>
                   <option value="Yes">Yes</option>
                   <option value="No">No</option>
                 </select>
@@ -119,6 +123,7 @@
                 <div>
                   <label class="block text-sm font-medium text-[#555555] mb-2">Menu/Catalog Available</label>
                   <select id="menu_catalog_available" class="form-input">
+                    <option value="">Select</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                   </select>
@@ -141,6 +146,7 @@
               <div>
                 <label class="block text-sm font-medium text-[#555555] mb-2">Online Orders Accepted</label>
                 <select id="online_orders_accepted" class="form-input">
+                  <option value="">Select</option>
                   <option value="Yes">Yes</option>
                   <option value="No">No</option>
                 </select>
@@ -329,6 +335,25 @@
 
     // Calculate live estimate via API (100% accurate, same backend logic)
     async function calculateLiveEstimate() {
+      // Check if enough fields are filled to calculate a meaningful score
+      const filledFields = formFields.filter(field => {
+        const element = document.getElementById(field);
+        if (!element) return false;
+        const value = element.value;
+        if (value === '' || value === null || value === undefined) return false;
+        return true;
+      });
+
+      // If less than 5 fields are filled, don't calculate - show placeholder
+      if (filledFields.length < 5) {
+        document.getElementById('live-total-score').textContent = '--';
+        document.getElementById('live-status-badge').textContent = '--';
+        document.getElementById('live-pillar-scores').innerHTML = '<div class="text-sm text-[#93A0CD] italic text-center py-4">Fill in details to see pillar scores</div>';
+        document.getElementById('live-weaknesses').innerHTML = '<div class="text-sm text-[#93A0CD] italic text-center py-4">No weaknesses detected yet</div>';
+        document.getElementById('live-service-pitch').textContent = 'No specific service needed';
+        return;
+      }
+
       try {
         const formData = {
           business_name: document.getElementById('business_name').value || 'Test Business',
