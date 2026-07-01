@@ -112,7 +112,7 @@
                 </div>
                 <div>
                   <label class="block text-sm font-medium text-[#555555] mb-2">Google Rating</label>
-                  <input type="number" id="google_rating" min="0" max="5" step="0.1" value="3.5" class="form-input">
+                  <input type="number" id="google_rating" min="0" max="5" step="0.1" value="0" class="form-input">
                 </div>
               </div>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -133,6 +133,7 @@
                 <div>
                   <label class="block text-sm font-medium text-[#555555] mb-2">Branding Quality</label>
                   <select id="branding_quality" class="form-input">
+                    <option value="">Select</option>
                     <option value="Low">Low</option>
                     <option value="Medium">Medium</option>
                     <option value="High">High</option>
@@ -365,7 +366,7 @@
           instagram_followers: parseInt(document.getElementById('instagram_followers').value) || 0,
           facebook_active: document.getElementById('facebook_active').value,
           website_status: document.getElementById('website_status').value,
-          google_rating: parseFloat(document.getElementById('google_rating').value) || 3.5,
+          google_rating: parseFloat(document.getElementById('google_rating').value) || 0,
           google_reviews_count: parseInt(document.getElementById('google_reviews_count').value) || 0,
           menu_catalog_available: document.getElementById('menu_catalog_available').value,
           branding_quality: document.getElementById('branding_quality').value,
