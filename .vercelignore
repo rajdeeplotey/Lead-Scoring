@@ -39,13 +39,6 @@ notebooks/.ipynb_checkpoints/
 # Environment
 .env
 
-# Large images (optional - remove if needed for frontend)
-*.jpg
-*.jpeg
-*.png
-!web/frontend/logo.jpg
-!web/frontend/static/
-
 # Vercel
 .vercel/
 
