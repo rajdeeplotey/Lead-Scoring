@@ -11,5 +11,6 @@
       "src": "/(.*)",
       "dest": "web/backend/app.py"
     }
-  ]
+  ],
+  "includeFiles": ["src/**", "models/**", "data/**"]
 }

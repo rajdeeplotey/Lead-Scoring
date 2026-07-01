@@ -9,13 +9,10 @@ import io
 from datetime import datetime
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
-from dotenv import load_dotenv
 import pandas as pd
 
-# Load environment variables
-load_dotenv()
-
 # Add src to path for imports
+# In Vercel, the working directory is the project root
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'src'))
 
 from data_prep import encode_yes_no_columns, encode_website_status, encode_branding_quality
@@ -24,13 +21,15 @@ from ml_model import add_ml_predictions
 from utils import clean_for_json, clean_dict_for_json
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'dev-secret-key'
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-secret-key')
 
 CORS(app)
 
-SAMPLE_DATA_PATH = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'sample_businesses_khanna.csv')
-FRONTEND_DIR = os.path.join(os.path.dirname(__file__), '..', 'frontend')
-FRONTEND_URL = os.getenv('FRONTEND_URL', 'http://localhost:5000')
+# Paths - work in both local and Vercel environments
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SAMPLE_DATA_PATH = os.path.join(BASE_DIR, 'data', 'sample_businesses_khanna.csv')
+FRONTEND_DIR = os.path.join(BASE_DIR, 'web', 'frontend')
+FRONTEND_URL = os.getenv('FRONTEND_URL', '')
 
 
 def prepare_data_from_csv(csv_content):
@@ -260,7 +259,3 @@ def serve_static_files(filename):
 def serve_static(filename):
     """Serve static files (CSS, JS, images, etc.)."""
     return send_from_directory(FRONTEND_DIR, filename)
-
-
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
