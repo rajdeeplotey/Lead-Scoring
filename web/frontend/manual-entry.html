@@ -316,12 +316,30 @@
         if (!element) return false;
         const value = element.value;
         if (value === '' || value === null || value === undefined) return false;
+        
+        // For number fields, don't count 0 as filled (it's the default)
         if (field === 'instagram_followers' || field === 'google_reviews_count' || field === 'years_in_business') {
-          return value !== '' && !isNaN(value);
+          return value !== '' && !isNaN(value) && value !== '0' && value !== 0;
         }
+        
+        // For google_rating, don't count 0 as filled (it's the default)
         if (field === 'google_rating') {
-          return value !== '' && !isNaN(value);
+          return value !== '' && !isNaN(value) && value !== '0' && value !== 0;
         }
+        
+        // For dropdowns, don't count empty string or "None" as filled
+        if (field === 'website_status') {
+          return value !== '' && value !== 'None';
+        }
+        
+        // For other dropdowns, don't count empty string as filled
+        if (field === 'phone_available' || field === 'whatsapp_available' || 
+            field === 'instagram_active' || field === 'facebook_active' ||
+            field === 'menu_catalog_available' || field === 'branding_quality' ||
+            field === 'online_orders_accepted') {
+          return value !== '' && value !== 'Select';
+        }
+        
         return true;
       });
 
@@ -398,6 +416,49 @@
 
     // Update live preview content with API response
     function updateLivePreviewContent(result) {
+      // Check if any fields are actually filled
+      const filledFields = formFields.filter(field => {
+        const element = document.getElementById(field);
+        if (!element) return false;
+        const value = element.value;
+        if (value === '' || value === null || value === undefined) return false;
+        
+        // For number fields, don't count 0 as filled (it's the default)
+        if (field === 'instagram_followers' || field === 'google_reviews_count' || field === 'years_in_business') {
+          return value !== '' && !isNaN(value) && value !== '0' && value !== 0;
+        }
+        
+        // For google_rating, don't count 0 as filled (it's the default)
+        if (field === 'google_rating') {
+          return value !== '' && !isNaN(value) && value !== '0' && value !== 0;
+        }
+        
+        // For dropdowns, don't count empty string or "None" as filled
+        if (field === 'website_status') {
+          return value !== '' && value !== 'None';
+        }
+        
+        // For other dropdowns, don't count empty string as filled
+        if (field === 'phone_available' || field === 'whatsapp_available' || 
+            field === 'instagram_active' || field === 'facebook_active' ||
+            field === 'menu_catalog_available' || field === 'branding_quality' ||
+            field === 'online_orders_accepted') {
+          return value !== '' && value !== 'Select';
+        }
+        
+        return true;
+      });
+
+      // If no fields are filled, show blank state instead of score/status
+      if (filledFields.length === 0) {
+        document.getElementById('live-total-score').textContent = '--';
+        document.getElementById('live-status-badge').textContent = '--';
+        document.getElementById('live-pillar-scores').innerHTML = '<div class="text-sm text-[#93A0CD] italic text-center py-4">Fill in details to see pillar scores</div>';
+        document.getElementById('live-weaknesses').innerHTML = '<div class="text-sm text-[#93A0CD] italic text-center py-4">No weaknesses detected yet</div>';
+        document.getElementById('live-service-pitch').textContent = 'No specific service needed';
+        return;
+      }
+
       // Update total score and status
       document.getElementById('live-total-score').textContent = result.total_score;
       document.getElementById('live-status-badge').innerHTML = getStatusBadge(result.status);
