@@ -441,6 +441,8 @@
       .then(response => response.text())
       .then(html => {
         document.getElementById('navbar-container').innerHTML = html;
+        // Initialize mobile menu after navbar loads
+        initMobileMenu();
       });
 
     // Load footer
@@ -449,6 +451,40 @@
       .then(html => {
         document.getElementById('footer-container').innerHTML = html;
       });
+
+    // Mobile menu toggle function
+    function initMobileMenu() {
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+
+      // Highlight active page
+      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.nav-link').forEach(link => {
+        const page = link.getAttribute('data-page');
+        if (page === currentPage.replace('.html', '')) {
+          link.classList.add('gradient-text');
+          link.classList.remove('text-gray-700');
+        }
+      });
+
+      // Scroll shadow and blur effect
+      const navbar = document.getElementById('navbar');
+      if (navbar) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 10) {
+            navbar.classList.add('shadow-lg', 'backdrop-blur-md');
+          } else {
+            navbar.classList.remove('shadow-lg', 'backdrop-blur-md');
+          }
+        });
+      }
+    }
 
     function setupUploadListeners() {
       dropZone.addEventListener('drop', (e) => {
