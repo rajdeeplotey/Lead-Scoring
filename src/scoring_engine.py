@@ -153,7 +153,7 @@ def calculate_menu_catalog_score(row):
 def calculate_branding_quality_score(row):
     """
     Calculate Branding Quality score (10 points total).
-    Low=2, Medium=6, High=10
+    Low=2, Medium=6, High=10, Not Set=0
     
     Args:
         row (pd.Series): Business data row
@@ -161,7 +161,12 @@ def calculate_branding_quality_score(row):
     Returns:
         int: Branding Quality score
     """
-    branding_quality = row.get('branding_quality_score', row.get('branding_quality', 0))
+    branding_quality = row.get('branding_quality_score', row.get('branding_quality', None))
+    
+    # If branding_quality is None, NaN, empty string, or not set, return 0
+    if branding_quality is None or (isinstance(branding_quality, float) and pd.isna(branding_quality)) or branding_quality == '':
+        return 0
+    
     if branding_quality == 0:  # Low
         return 2
     elif branding_quality == 1:  # Medium

@@ -92,8 +92,13 @@ def prepare_data_from_dict(data_dict):
     
     # Encode branding_quality
     if 'branding_quality' in df.columns:
-        df['branding_quality_score'] = df['branding_quality'].map({'Low': 0, 'Medium': 1, 'High': 2})
+        print(f"Encoding branding_quality: {df['branding_quality'].values}")
+        # Only map non-empty values, leave empty/None as NaN
+        df['branding_quality_score'] = df['branding_quality'].apply(
+            lambda x: {'Low': 0, 'Medium': 1, 'High': 2}.get(x, None) if pd.notna(x) and x != '' else None
+        )
         df = df.drop('branding_quality', axis=1)
+        print(f"After encoding branding_quality_score: {df['branding_quality_score'].values}")
     
     return df
 

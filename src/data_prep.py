@@ -83,6 +83,7 @@ def encode_branding_quality(df):
     """
     Encode branding_quality to numeric scores: Low=0, Medium=1, High=2.
     Creates branding_quality_score column to match ML model training features.
+    Empty/None values are left as NaN/None to be handled by scoring engine.
     
     Args:
         df (pd.DataFrame): Input dataframe
@@ -91,7 +92,10 @@ def encode_branding_quality(df):
         pd.DataFrame: Dataframe with encoded branding_quality
     """
     if 'branding_quality' in df.columns:
-        df['branding_quality_score'] = df['branding_quality'].map({'Low': 0, 'Medium': 1, 'High': 2})
+        # Only map non-empty values, leave empty/None as NaN
+        df['branding_quality_score'] = df['branding_quality'].apply(
+            lambda x: {'Low': 0, 'Medium': 1, 'High': 2}.get(x, None) if pd.notna(x) and x != '' else None
+        )
         df = df.drop('branding_quality', axis=1)
     
     return df
