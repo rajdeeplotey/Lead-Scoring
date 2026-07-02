@@ -131,6 +131,27 @@
         document.getElementById('navbar-container').innerHTML = html;
       });
 
+    // Load stored data on page load
+    function loadStoredData() {
+      const storedBusinesses = localStorage.getItem('scoredBusinesses');
+      if (storedBusinesses) {
+        try {
+          const businesses = JSON.parse(storedBusinesses);
+          if (businesses && businesses.length > 0) {
+            scoredData = businesses;
+            displayResults({ count: businesses.length, businesses: businesses });
+            return true;
+          }
+        } catch (e) {
+          console.error('Error parsing stored data:', e);
+        }
+      }
+      return false;
+    }
+
+    // Auto-load stored data on page load
+    loadStoredData();
+
     // Drop zone functionality
     const dropZone = document.getElementById('drop-zone');
     const fileInput = document.getElementById('file-input');
