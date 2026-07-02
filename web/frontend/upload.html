@@ -494,15 +494,20 @@
         }
       });
 
-      // Scroll shadow and blur effect
+      // Scroll shadow and blur effect (throttled for performance)
       const navbar = document.getElementById('navbar');
       if (navbar) {
+        let scrollTimeout;
         window.addEventListener('scroll', () => {
-          if (window.scrollY > 10) {
-            navbar.classList.add('shadow-lg', 'backdrop-blur-md');
-          } else {
-            navbar.classList.remove('shadow-lg', 'backdrop-blur-md');
-          }
+          if (scrollTimeout) return;
+          scrollTimeout = setTimeout(() => {
+            scrollTimeout = null;
+            if (window.scrollY > 10) {
+              navbar.classList.add('shadow-lg', 'backdrop-blur-md');
+            } else {
+              navbar.classList.remove('shadow-lg', 'backdrop-blur-md');
+            }
+          }, 16); // ~60fps throttling
         });
       }
     }

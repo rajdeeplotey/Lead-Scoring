@@ -53,8 +53,9 @@ h1 {
   border-radius: 12px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 4px 15px rgba(5, 11, 73, 0.2);
+  will-change: transform;
 }
 
 .btn-primary:hover {
@@ -87,7 +88,8 @@ h1 {
   padding: 24px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(19, 67, 185, 0.08);
-  transition: all 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
+  will-change: transform;
 }
 
 .card:hover {
@@ -120,9 +122,9 @@ h1 {
   padding: 12px 16px;
   border: 2px solid #E5E7EB;
   border-radius: 12px;
- _FONT-family: inherit;
+  font-family: inherit;
   font-size: 16px;
-  transition: all 0.3s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .form-input:focus {
