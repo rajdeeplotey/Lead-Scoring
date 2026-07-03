@@ -1,1 +1,33 @@
-.vercel
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+ENV/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Cache
+.cache/
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+dist/
+build/
+
+# Vercel
+.vercel/
+
+# Model/data outputs
+*.pkl
+*.joblib
+*.h5
+*.model
+outputs/
