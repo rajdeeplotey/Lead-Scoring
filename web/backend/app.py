@@ -44,6 +44,32 @@ FRONTEND_DIR = os.path.join(PROJECT_ROOT, 'web', 'frontend')
 FRONTEND_URL = os.getenv('FRONTEND_URL', '')
 
 
+def validate_csv_columns(df):
+    """
+    Validate that CSV has all required columns for scoring.
+    
+    Args:
+        df (pd.DataFrame): DataFrame to validate
+        
+    Returns:
+        tuple: (is_valid, error_message)
+    """
+    required_columns = [
+        'business_name', 'phone_available', 'whatsapp_available',
+        'instagram_active', 'instagram_followers', 'facebook_active',
+        'website_status', 'google_rating', 'google_reviews_count',
+        'menu_catalog_available', 'branding_quality', 'years_in_business',
+        'online_orders_accepted'
+    ]
+    
+    missing_columns = [col for col in required_columns if col not in df.columns]
+    
+    if missing_columns:
+        return False, f"Missing required columns: {', '.join(missing_columns)}"
+    
+    return True, None
+
+
 def prepare_data_from_csv(csv_content):
     """
     Prepare data from CSV content for scoring.
@@ -55,6 +81,12 @@ def prepare_data_from_csv(csv_content):
         pd.DataFrame: Prepared dataframe
     """
     df = pd.read_csv(csv_content, keep_default_na=False, na_values=[])
+    
+    # Validate columns before processing
+    is_valid, error_msg = validate_csv_columns(df)
+    if not is_valid:
+        raise ValueError(error_msg)
+    
     df = encode_yes_no_columns(df)
     df = encode_website_status(df)
     df = encode_branding_quality(df)

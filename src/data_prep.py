@@ -3,6 +3,7 @@ Data preparation module for B Socio Lead Scoring.
 Handles safe CSV loading and encoding of categorical variables.
 """
 
+import os
 import pandas as pd
 
 

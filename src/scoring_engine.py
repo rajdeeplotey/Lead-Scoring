@@ -82,8 +82,10 @@ def calculate_google_presence_score(row):
     Returns:
         int: Google Presence score
     """
-    rating_tier = get_google_rating_tier(row['google_rating'])
-    review_tier = get_review_count_tier(row['google_reviews_count'])
+    rating = row.get('google_rating', 0)
+    review_count = row.get('google_reviews_count', 0)
+    rating_tier = get_google_rating_tier(rating)
+    review_tier = get_review_count_tier(review_count)
     return rating_tier + review_tier
 
 
@@ -97,8 +99,10 @@ def calculate_instagram_activity_score(row):
     Returns:
         int: Instagram Activity score
     """
-    active_score = 10 if row['instagram_active'] == 1 else 0
-    follower_tier = get_follower_tier(row['instagram_followers'])
+    active = row.get('instagram_active', 0)
+    followers = row.get('instagram_followers', 0)
+    active_score = 10 if active == 1 else 0
+    follower_tier = get_follower_tier(followers)
     return active_score + follower_tier
 
 
@@ -133,7 +137,8 @@ def calculate_whatsapp_availability_score(row):
     Returns:
         int: WhatsApp Availability score
     """
-    return 15 if row['whatsapp_available'] == 1 else 0
+    whatsapp = row.get('whatsapp_available', 0)
+    return 15 if whatsapp == 1 else 0
 
 
 def calculate_menu_catalog_score(row):
@@ -147,7 +152,8 @@ def calculate_menu_catalog_score(row):
     Returns:
         int: Menu/Catalog score
     """
-    return 10 if row['menu_catalog_available'] == 1 else 0
+    menu = row.get('menu_catalog_available', 0)
+    return 10 if menu == 1 else 0
 
 
 def calculate_branding_quality_score(row):
@@ -186,7 +192,8 @@ def calculate_online_ordering_score(row):
     Returns:
         int: Online Ordering score
     """
-    return 10 if row['online_orders_accepted'] == 1 else 0
+    online = row.get('online_orders_accepted', 0)
+    return 10 if online == 1 else 0
 
 
 def calculate_lead_score(row):
